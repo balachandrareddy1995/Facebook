@@ -1,0 +1,7 @@
+Chrome executable path: C:\Users\balachandra.g\AppData\Local\ms-playwright\chromium-1112\chrome-win\chrome.exe
+Reading Input Data from Json File Email:Json3@gmail
+Reading Input Data from Json File PassWord:password3
+Reading Input Data From Excel To Enter Email:excel@gmail.com
+Reading Input Data From Excel To Enter Email:excel123
+Reading Input Data From XML file userName:Xml@gmail.com
+Reading Input Data From XML file  Password:xml123

@@ -1,0 +1,40 @@
+{
+  "name": "e2e",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "e2e:test:run": "npx playwright test",
+    "cucumbertest:run": "npx cucumber-js",
+    "cucumbertest:tag:@only": "npx cucumber-js --tags @only",
+    "cucumbertest:tag:@skip": "npx cucumber-js --tags @skip",
+    "allure:commandline:setup": "npm install --save-dev allure-commandline",
+    "allure:playwright:setup": "npm install --save-dev allure-playwright",
+    "allure:test:run": "npx playwright test --reporter=line,allure-playwright",
+    "allure:report": "npx allure serve allure-results",
+    "show-report:html":"npx playwright show-report"
+
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.43.1",
+    "@types/node": "^20.12.7",
+    "allure-commandline": "^2.29.0",
+    "allure-playwright": "^2.15.1"
+  },
+  "dependencies": {
+    "@cucumber/cucumber": "^10.4.0",
+    "exceljs": "^4.4.0",
+    "fast-csv": "^5.0.1",
+    "node": "^14.1.0",
+    "playwright": "^1.43.1",
+    "xml-js": "^1.6.11",
+    "xml2js": "^0.6.2",
+    "xmldom": "^0.6.0"
+  }
+}

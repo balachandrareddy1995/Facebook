@@ -1,0 +1,17 @@
+{
+    "loanOfficerLogin": 
+      {
+        "email": "Json1@gmail",
+        "password": "password1"
+        
+      },
+    
+    "loanOriginatorLogin": 
+      {
+        "email":  "Json3@gmail",
+        "password": "password3"
+      }
+    
+    
+  }
+  
