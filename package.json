@@ -15,14 +15,13 @@
     "allure:playwright:setup": "npm install --save-dev allure-playwright",
     "allure:test:run": "npx playwright test --reporter=line,allure-playwright",
     "allure:report": "npx allure serve allure-results",
-    "show-report:html":"npx playwright show-report"
-
+    "show-report:html": "npx playwright show-report"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@playwright/test": "^1.43.1",
+    "@playwright/test": "^1.44.1",
     "@types/node": "^20.12.7",
     "allure-commandline": "^2.29.0",
     "allure-playwright": "^2.15.1"
