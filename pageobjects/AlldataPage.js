@@ -29,7 +29,7 @@ class AlldataPage {
     
     async URL() {
         const chromeExecutablePath = chromium.executablePath();
-        console.log("chrome-path"+chromeExecutablePath);
+        console.log("chrome-path:"+chromeExecutablePath);
             this.browser=await chromium.launch({
             headless:false,
             executablePath:'C:/Users/balachandra.g/AppData/Local/ms-playwright/chromium-1117/chrome-win/chrome.exe',
