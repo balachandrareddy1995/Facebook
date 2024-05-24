@@ -37,7 +37,7 @@ class AlldataPage {
         console.log("chrome-path: " + (chromeExecutablePath || "default"));
         this.browser = await chromium.launch({
             headless: headless,
-            executablePath: chromeExecutablePath,
+            executablePath: "C:/Users/balachandra.g/AppData/Local/ms-playwright/chromium-1117/chrome-win/chrome.exe",
         });
         this.context = await this.browser.newContext();
         this.page = await this.context.newPage();
