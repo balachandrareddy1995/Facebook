@@ -68,7 +68,7 @@ class AlldataPage {
 
 
         if (key === 'loanOfficerLogin' || key === 'loanOriginatorLogin') {
-            const jsonData = fs.readFileSync('D:/e2e/Utils/data.json', 'utf8');
+            const jsonData = fs.readFileSync('Utils/data.json', 'utf8');
             const credentials = JSON.parse(jsonData);//json is convert from string
             const readEmail = credentials[key].email;
             console.log("Reading Input Data from Json File Email:" + readEmail);
