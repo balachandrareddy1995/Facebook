@@ -74,9 +74,11 @@ class AlldataPage {
             console.log("Reading Input Data from Json File Email:" + readEmail);
             const readPassword = credentials[key].password;
             console.log("Reading Input Data from Json File PassWord:" + readPassword);
+            if (this.page && this.page.locator) {
             await this.page.locator(this.email).fill(readEmail);
             await this.page.locator(this.passWord).fill(readPassword);
         }
+    }
         else {
             throw new Error("Invalid key provided: " + key);
         }
