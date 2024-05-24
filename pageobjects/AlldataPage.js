@@ -28,11 +28,15 @@ class AlldataPage {
 
     
     async URL() {
-        const chromeExecutablePath = chromium.executablePath();
-        console.log("chrome-path:"+chromeExecutablePath);
+        // const chromeExecutablePath = chromium.executablePath();
+        // console.log("chrome-path:"+chromeExecutablePath);
+        const isCI = process.env.CI === 'true';  // Check if running in CI environment
+        const chromeExecutablePath = isCI ? undefined : chromium.executablePath();
+    
+        console.log("chrome-path: " + (chromeExecutablePath || "default"));
             this.browser=await chromium.launch({
             headless:false,
-            executablePath:'C:/Users/balachandra.g/AppData/Local/ms-playwright/chromium-1117/chrome-win/chrome.exe',
+            executablePath:chromeExecutablePath,
            });
             this.context = await this.browser.newContext();
             this.page = await this.context.newPage();
