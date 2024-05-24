@@ -91,7 +91,7 @@ class AlldataPage {
 
         //Read test data from Excel file
         const workbook = new ExcelJS.Workbook();
-        await workbook.xlsx.readFile('D:/e2e/Utils/testData.xlsx');
+        await workbook.xlsx.readFile('Utils/testData.xlsx');
         const worksheet = workbook.getWorksheet('Sheet1');
         // Assuming your Excel file has columns 'username' and 'password'
         worksheet.eachRow(async (row, rowNumber) => {
@@ -100,11 +100,12 @@ class AlldataPage {
                 const readPassWord = row.getCell(2).value;  // Enter username and password
                 console.log("Reading Input Data From Excel To Enter Email:" + readEmail);
                 console.log("Reading Input Data From Excel To Enter Email:" + readPassWord);
+                if (this.page && this.page.locator) {
                 await this.page.locator(this.email).fill(readEmail);
                 await this.page.locator(this.passWord).fill(readPassWord);
 
 
-
+                }
             }
         });
 
@@ -114,7 +115,7 @@ class AlldataPage {
 
     async readDataFromXMLToEnterDataEmailAndPasswordFields() {
 
-        const testData = await readFile('D:/e2e/Utils/testdata.xml', 'utf-8');
+        const testData = await readFile('Utils/testdata.xml', 'utf-8');
         const parser = new DOMParser();
         const xmlDoc = parser.parseFromString(testData, 'text/xml');
 
@@ -125,9 +126,11 @@ class AlldataPage {
         console.log("Reading Input Data From XML file  Password:" + password);
 
         // Fill in login form fields
+        if (this.page && this.page.locator) {
         await this.page.locator(this.email).fill(username);
         await this.page.locator(this.passWord).fill(password);
     }
+}
 
 
     async readDataFromCSVFileToEnterDataEmailAndPasswordFields() {
@@ -141,12 +144,14 @@ class AlldataPage {
         const fs = require('fs');
         const csv = require('csv-parser');
 
-        fs.createReadStream('D:/e2e/Utils/testdata.csv')
+        fs.createReadStream('Utils/testdata.csv')
             .pipe(csv())
             .on('data', async (data) => {
                 // Fill email and password fields with data from CSV
+                if (this.page && this.page.locator) {
                 await page.locator(this.email).fill(data.email);
                 await page.locator(this.passWord).fill(data.password);
+                }
             })
             .on('end', () => {
                 console.log('CSV file successfully processed');
