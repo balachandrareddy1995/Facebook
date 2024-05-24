@@ -17,38 +17,39 @@ const fs = require('fs');
 
 class AlldataPage {
     constructor(page) {
-        this.browser =null;
-        this.context=null;
-        this.context=null;
+        this.browser = null;
+        this.context = null;
+        this.context = null;
         this.page = page;
         this.email = "#email";
         this.passWord = "#pass";
         this.loginButton = '//button[@name="login"]';
     }
 
-    
+
     async URL() {
         // const chromeExecutablePath = chromium.executablePath();
         // console.log("chrome-path:"+chromeExecutablePath);
         const isCI = process.env.CI === 'true';  // Check if running in CI environment
+        const headless = isCI ? true : false; // Set headless based on CI environment
         const chromeExecutablePath = isCI ? undefined : chromium.executablePath();
-    
+
         console.log("chrome-path: " + (chromeExecutablePath || "default"));
-            this.browser=await chromium.launch({
-            headless:false,
-            executablePath:chromeExecutablePath,
-           });
-            this.context = await this.browser.newContext();
-            this.page = await this.context.newPage();
-            await this.page.goto("https://www.facebook.com/");
-            //const alldataPage = new AlldataPage(this.page);
-           
-        
-    
-    
-}
-    async  readDataFromJsonToEnterDataEmailAndPasswordFields(key) {
-        
+        this.browser = await chromium.launch({
+            headless: headless,
+            executablePath: chromeExecutablePath,
+        });
+        this.context = await this.browser.newContext();
+        this.page = await this.context.newPage();
+        await this.page.goto("https://www.facebook.com/");
+        //const alldataPage = new AlldataPage(this.page);
+
+
+
+
+    }
+    async readDataFromJsonToEnterDataEmailAndPasswordFields(key) {
+
         // json >> string >> js object(JSON) format
         // const dataset = JSON.parse(JSON.stringify(require('../Utils/data.json')));
         // console.log("Reading Input Data from Json File Email:" + dataset.email);
@@ -58,7 +59,7 @@ class AlldataPage {
 
 
         // Read the JSON file
-        
+
 
         if (key === 'loanOfficerLogin' || key === 'loanOriginatorLogin') {
             const jsonData = fs.readFileSync('D:/e2e/Utils/data.json', 'utf8');
@@ -74,12 +75,12 @@ class AlldataPage {
             throw new Error("Invalid key provided: " + key);
         }
 
-    
-}
 
-    
+    }
+
+
     async readDataFromExcelToEnterDataEmailAndPassword() {
-      
+
         //Read test data from Excel file
         const workbook = new ExcelJS.Workbook();
         await workbook.xlsx.readFile('D:/e2e/Utils/testData.xlsx');
@@ -102,8 +103,8 @@ class AlldataPage {
 
     }
 
- 
-async readDataFromXMLToEnterDataEmailAndPasswordFields() {
+
+    async readDataFromXMLToEnterDataEmailAndPasswordFields() {
 
         const testData = await readFile('D:/e2e/Utils/testdata.xml', 'utf-8');
         const parser = new DOMParser();
@@ -123,7 +124,7 @@ async readDataFromXMLToEnterDataEmailAndPasswordFields() {
 
     async readDataFromCSVFileToEnterDataEmailAndPasswordFields() {
 
-      
+
         // const testData = await readCSV('D:/e2e/Utils/testdata.csv');
         // for (const data of testData) {
         //     await this.page.locator(this.email).fill(data.email);
