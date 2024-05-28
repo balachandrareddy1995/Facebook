@@ -13,7 +13,7 @@ module.exports = defineConfig({
   use: {
   browserName:'chromium',
   headless:false,
-  screenshot:'only-on-failure',
+  screenshot:'on',
   video:'on',
   trace:'on'
   },
