@@ -8,6 +8,7 @@ module.exports = defineConfig({
   reporter: [
     ['allure-playwright'],
     ['html'],
+    ['@estruyf/github-actions-reporter']
 ],
  
   use: {
