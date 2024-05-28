@@ -28,6 +28,7 @@
   },
   "dependencies": {
     "@cucumber/cucumber": "^10.4.0",
+    "@estruyf/github-actions-reporter": "^1.7.0",
     "exceljs": "^4.4.0",
     "fast-csv": "^5.0.1",
     "node": "^14.1.0",
